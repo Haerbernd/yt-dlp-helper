@@ -2,7 +2,7 @@
  A program that helps you to use yt-dlp
 
 ## Setup
-The setup for the yt-dlp-helper is easy, all you need to do is download the repository and edit the conifg.json file so that it contains the right path to your yt-dlp installation. For that you have to input the letter of the drive your yt-dlp is installed on as well as the path of the installation.
+The setup for the yt-dlp-helper is easy, all you need to do is download the repository and edit the conifg.json file so that it contains the right path to your yt-dlp installation. For that you have to input the letter of the drive your yt-dlp is installed on as well as the path of the installation. Don't forget that you have to replace every Backslash (\) with two Backslashes (\\).
 
 Like the last paragraph indicates yt-dlp must already be installed on your system or else the program won't work.
 
