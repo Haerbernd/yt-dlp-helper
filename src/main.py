@@ -36,4 +36,5 @@ def start(config):
         log.debug.debug('Cleaned screen...')
     log.main.info('Finished downloading all videos/playlists...')
     log.main.info('Program will now be shutted down as it finished all operations...')
+    input()
     sys.exit(0)
