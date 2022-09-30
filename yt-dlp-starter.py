@@ -5,7 +5,7 @@ import os
 from src import main, utils, logger as log
 
 if os.path.exists('C:\\Users\\' + str(os.getlogin()) + '\\AppData\\Roaming\\yt-dlp-help'):
-    file = 'C:\\Users\\' + str(os.getlogin()) + '\\AppData\\Roaming\\yt-dlp-help\\alternate-config-path'
+    file = 'C:\\Users\\' + str(os.getlogin()) + '\\AppData\\Roaming\\yt-dlp-helper\\alternate-config-path'
     file = open(file, 'r+', encoding='utf-8')
     tmp = file.read()
     file.close()
