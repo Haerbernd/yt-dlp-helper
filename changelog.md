@@ -4,3 +4,4 @@
 
 - added Gui
 - completely overhauled program
+- added basic functionality
