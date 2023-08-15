@@ -26,6 +26,7 @@ class MainWindow(qtw.QWidget):
         """MainWindow constructor"""
         super().__init__()
         self.setWindowTitle('yt-dlp-helper')
+        self.resize(300, 50)
 
         instructionLabel = qtw.QLabel('Input video URL!', self)
         self.URLBox = qtw.QLineEdit(self)
