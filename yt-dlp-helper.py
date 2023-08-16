@@ -69,6 +69,7 @@ if __name__ == '__main__':
     if not os.path.exists('./default.conf'):
         file = open('./default.conf', 'w', encoding='utf-8')
         file.write(f'-P "{os.getcwd()}/videos"\n-o "%(title)s.%(ext)s"\n--windows-filenames')
+        file.close()
     app = qtw.QApplication(sys.argv)
     mw = MainWindow()
     sys.exit(app.exec())
