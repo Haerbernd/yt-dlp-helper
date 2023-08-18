@@ -49,12 +49,12 @@ class MainWindow(qtw.QWidget):
 
     def onPush(self):
         url = self.URLBox.text()
+        self.URLBox.setText('')
         if validate_url(url):
             self.errorLabel.setVisible(False)
             download_video(url)
         else:
             self.errorLabel.setVisible(True)
-        self.URLBox.setText('')
 
 
 if __name__ == '__main__':
