@@ -11,7 +11,8 @@ URLError = False
 
 def validate_url(url):
     if str(url).startswith('https://www.youtube.com/watch?v=') | str(url).startswith('youtube.com/watch?v=') | \
-            str(url).startswith('https://youtu.be/'):
+            str(url).startswith('https://youtu.be/') | str(url).startswith('youtu.be/') | \
+            str(url).startswith('https://youtube.com/watch?v='):
         return True
     else:
         return False
