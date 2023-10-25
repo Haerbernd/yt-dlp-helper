@@ -6,25 +6,22 @@ from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-URLError = False
 
-
-def validate_url(url):
-    if str(url).startswith('https://www.youtube.com/watch?v=') | str(url).startswith('youtube.com/watch?v=') | \
-            str(url).startswith('https://youtu.be/') | str(url).startswith('youtu.be/') | \
-            str(url).startswith('https://youtube.com/watch?v='):
+def validate_url(link):
+    if str(link).startswith('https://www.youtube.com/watch?v=') | str(link).startswith('youtube.com/watch?v=') | \
+            str(link).startswith('https://youtu.be/') | str(link).startswith('youtu.be/') | \
+            str(link).startswith('https://youtube.com/watch?v='):
         return True
     else:
         return False
 
 
-def download_video(url):
-    os.system(f'.\yt-dlp --config-location "./default.conf" {url}')
+def download_video(link):
+    os.system(f'.\yt-dlp --config-location "./default.conf" {link}')
 
 
 class MainWindow(qtw.QWidget):
     def __init__(self):
-        """MainWindow constructor"""
         super().__init__()
         self.setWindowTitle('yt-dlp-helper')
         self.resize(300, 50)
