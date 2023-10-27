@@ -1,0 +1,9 @@
+{
+  "current-version": "2.0.0-ALPHA",
+  "release-info": {
+    "is-main-release": true,
+    "is-major-patch": false,
+    "is-minor-patch": false,
+    "is-bugfix": false
+  }
+}
