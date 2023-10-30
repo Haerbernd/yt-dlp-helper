@@ -18,9 +18,8 @@ def get_config_path():
         config_path_f = f'/home/{user}/.yt-dlp-helper'
         return config_path_f
     else:
-        input(
-            f'Your current Operating System {platform.system()} is not supported. Currently supported are only Windows'
-            f' and Linux\nPress Enter to exit the program...')
+        input(f'Your current Operating System {platform.system()} is not supported. Currently supported are only '
+              f'Windows and Linux\nPress Enter to exit the program...')
         if __name__ == '__main__':
             sys.exit(0)
         else:
