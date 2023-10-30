@@ -31,7 +31,17 @@ def get_config():
     config_path = get_config_path()
     if config_path == 'Unsupported OS':
         return
+
     file = open(f'{config_path}/config.json', 'r', encoding='utf-8')
     config = json.load(file)
     file.close()
     return config
+
+
+def update_config(config_new):
+    config_path = get_config_path()
+    if config_path == 'Unsupported OS':
+        return
+
+    file = open(f'{config_path}/config.json', 'w', encoding='utf-8')
+    json.dump()
