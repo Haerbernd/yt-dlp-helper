@@ -19,7 +19,7 @@ def validate_url(link):
 
 
 def download_video(link):
-    os.system(f'.\yt-dlp --config-location "./default.conf" {link}')
+    os.system(f'.\\yt-dlp --config-location "./default.conf" {link}')
 
 
 class MainWindow(qtw.QWidget):
