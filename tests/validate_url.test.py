@@ -24,3 +24,5 @@ for i in invalid_urls:
 if invalidate_error or validate_error > 0:
     print(f'The test failed!\nThere {validate_error} valid urls were perceived as invalid and {invalidate_error} '
           f'invalid urls were perceived as valid')
+else:
+    print('All test completed successfully')
