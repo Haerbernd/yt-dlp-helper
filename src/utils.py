@@ -11,7 +11,7 @@ class Cleaner:
     @staticmethod
     def list_to_string(list_that_will_be_converted, keep_comma=True, add_newlines=False):
         list_that_will_be_converted = str(list_that_will_be_converted)
-        list_that_will_be_converted = re.sub('\[', '', list_that_will_be_converted)
+        list_that_will_be_converted = re.sub('\\[', '', list_that_will_be_converted)
         list_that_will_be_converted = re.sub(']', '', list_that_will_be_converted)
         list_that_will_be_converted = re.sub("'", '', list_that_will_be_converted)
         if add_newlines:
