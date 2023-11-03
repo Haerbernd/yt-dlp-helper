@@ -9,6 +9,8 @@
 - added support for playlists and shorts
 - added logging
 - added utility scripts
+- minor code improvements
+- added rudimentary config
 
 ## 1.0.2-ALPHA
 - changed the input validation, so that it will accept more diverse kinds of YouTube video links
