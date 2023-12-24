@@ -1,3 +1,4 @@
+from src import utils, logger as log
 import platform
 import sys
 import os
@@ -5,6 +6,8 @@ import urllib.request as url
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
+
+own_name = str(os.path.basename(__file__).replace('.py', ''))
 
 
 def validate_url(link):  # TODO: Optimize https recognition
@@ -60,13 +63,21 @@ class MainWindow(qtw.QWidget):
             self.errorLabel.setVisible(True)
 
 
+def get_os_specific_yt_dlp_binary_extension():
+    current_os = utils.SystemFunctions.validate_os()
+
+    if current_os == 'windows':
+        return '.exe'
+    elif current_os == 'linux':
+        return ''
+
+
 if __name__ == '__main__':
-    if platform.system().lower() == 'windows':
-        if not os.path.exists('./yt-dlp.exe'):
-            url.urlretrieve('https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe', './yt-dlp.exe')
-    elif platform.system().lower() == 'linux' or 'linux2':
-        if not os.path.exists('./yt-dlp'):
-            url.urlretrieve('https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp', 'yt-dlp')
+    if not os.path.exists(f'./yt-dlp{get_os_specific_yt_dlp_binary_extension()}'):
+        url.urlretrieve(f'https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp'
+                        f'{get_os_specific_yt_dlp_binary_extension()}', f'yt-dlp'
+                                                                        f'{get_os_specific_yt_dlp_binary_extension()}')
+
     if not os.path.exists('./videos'):
         os.mkdir('./videos')
     if not os.path.exists('./default.conf'):
