@@ -3,14 +3,14 @@
 ## 2.0.0-ALPHA
 - removed no longer needed lines of code
 - improved comments where possible/necessary
-- included (auto-)updater
 - started to add documentation to this project
 - started to implement tests
 - added support for playlists and shorts
 - added logging
 - added utility scripts
 - minor code improvements
-- added rudimentary config
+- added rudimentary config for the program
+- improved README
 
 ## 1.0.2-ALPHA
 - changed the input validation, so that it will accept more diverse kinds of YouTube video links
