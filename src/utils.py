@@ -24,7 +24,7 @@ class Cleaner:
         return list_that_will_be_converted
 
 
-class System:
+class SystemFunctions:
     @staticmethod
     def get_os(support_mac=False):
         os = platform.system().lower()
@@ -39,22 +39,26 @@ class System:
         raise err.UnsupportedOSError(os)
 
     @staticmethod
-    def validate_os(terminate_on_error=True):
+    def validate_os(terminate_on_error=True, support_mac=False):
         try:
-            os = System.get_os()
+            os = SystemFunctions.get_os(support_mac)
+            return os
         except err.UnsupportedOSError:
-            if terminate_on_error:
-                System.terminate()
+            if terminate_on_error and os is not None:  # TODO: Might be problematic -> check and improve if necessary
+                SystemFunctions.terminate(termination_source=f'unsupported OS "{os}" was used!')
+            elif terminate_on_error:
+                SystemFunctions.terminate(termination_source=f'unsupported OS was used!')
 
     @staticmethod
     def clear():
-        if platform.system().lower() == 'windows':
+        current_os = SystemFunctions.validate_os()
+        if current_os == 'windows':
             os.system('cls')
-        elif platform.system().lower() == 'linux' or 'linux2':
+        elif current_os == 'linux' or 'linux2':
             os.system('clear')
 
     @staticmethod
-    def terminate(termination_source, exit_code=0, termination_reason=None):
+    def terminate(termination_source=__name__, exit_code=0, termination_reason=None):
         if termination_reason is None:
             log.main.warning(f"The program or program subscript {termination_source} will now be shut down...")
         else:
