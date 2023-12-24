@@ -3,8 +3,6 @@ import os
 import platform
 import re
 import sys
-import json
-import ast
 
 
 class Cleaner:
