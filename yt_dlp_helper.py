@@ -1,18 +1,14 @@
-import re
-
-from src import utils, logger as log
-import platform
+from src import utils, config_handler, logger as log
 import sys
 import os
+import re
 import urllib.request as url
 from PyQt5 import QtWidgets as qtw
 from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
-own_name = str(os.path.basename(__file__).replace('.py', ''))
 
-
-# This function only validates weather a URL is technically a correct YouTube link not if it is actually a working URL
+# This function only validates weather a URL is technically a correct YouTube link not if it is a working URL
 def validate_url(link):
     if str(link).startswith('http:'):
         link = re.sub('http:', 'https:', str(link))
@@ -26,8 +22,11 @@ def validate_url(link):
         return False
 
 
-def download_video(link, yt_dlp_config_file="./default.conf"):
-    os.system(f'.\\yt-dlp --config-location "{yt_dlp_config_file}" "{link}"')
+def download_video(link, config_file, use_global_config):
+    if not use_global_config:
+        os.system(f'.\\yt-dlp --config-location "{config_file}" "{link}"')
+    else:
+        os.system(f'.\\yt-dlp) "{link}"')
 
 
 class MainWindow(qtw.QWidget):
@@ -63,7 +62,8 @@ class MainWindow(qtw.QWidget):
         self.URLBox.setText('')
         if validate_url(link):
             self.errorLabel.setVisible(False)
-            download_video(link)
+            config = config_handler.get_config()
+            download_video(link, config['localYt-dlpConfigName'], use_global_config=config['useGlobalYt-dlpConfig'])
         else:
             self.errorLabel.setVisible(True)
 
@@ -83,7 +83,7 @@ if __name__ == '__main__':
                         f'{get_os_specific_yt_dlp_binary_extension()}', f'yt-dlp'
                                                                         f'{get_os_specific_yt_dlp_binary_extension()}')
 
-    # TODO: Make the following block more versatile and responsive to the config
+    # TODO: Make the following block more versatile and responsive to the config -> later Update
     if not os.path.exists('./videos'):
         os.mkdir('./videos')
     if not os.path.exists('.meta/default.conf'):
