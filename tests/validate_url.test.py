@@ -2,9 +2,11 @@ import yt_dlp_helper
 from src import utils
 
 valid_urls = [
-    'https://www.youtube.com/watch?v=Ds1--Gl9u68',
-    'https://youtu.be/Ds1--Gl9u68',
-    'https://www.youtube.com/playlist?list=PLfu_Bpi_zcDNEKmR82hnbv9UxQ16nUBF7'
+    'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    'https://youtu.be/dQw4w9WgXcQ',
+    'https://www.youtube.com/playlist?list=PL2MI040U_GXq1L5JUxNOulWCyXn-7QyZK',
+    'youtu.be/dQw4w9WgXcQ',
+    'http://youtu.be/dQw4w9WgXcQ'
 ]
 invalid_urls = [
     'https://google.com',
