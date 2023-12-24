@@ -1,4 +1,4 @@
-from src import logger as log
+from src import logger as log, custom_errors as err
 import os
 import platform
 import re
@@ -9,12 +9,15 @@ import ast
 
 class Cleaner:
     @staticmethod
-    def list_to_string(list_that_will_be_converted, keep_comma=True, add_newlines=False):
+    def list_to_pretty_string(list_that_will_be_converted, keep_comma=True, replace_comma_with_newline=False,
+                              add_newline_after_comma=False):
         list_that_will_be_converted = str(list_that_will_be_converted)
         list_that_will_be_converted = re.sub('\\[', '', list_that_will_be_converted)
         list_that_will_be_converted = re.sub(']', '', list_that_will_be_converted)
         list_that_will_be_converted = re.sub("'", '', list_that_will_be_converted)
-        if add_newlines:
+        if replace_comma_with_newline:
+            list_that_will_be_converted = re.sub(', ', ',\n', list_that_will_be_converted)
+        if add_newline_after_comma:
             list_that_will_be_converted = re.sub(', ', ',\n', list_that_will_be_converted)
         if not keep_comma:
             list_that_will_be_converted = re.sub(',', '', list_that_will_be_converted)
@@ -22,6 +25,27 @@ class Cleaner:
 
 
 class System:
+    @staticmethod
+    def get_os(support_mac=False):
+        os = platform.system().lower()
+        if os == "windows":
+            return 'windows'
+        elif os == 'linux' or 'linux2':
+            return 'linux'
+        elif os == 'darwin':
+            if support_mac:
+                return 'mac'
+            raise err.UnsupportedOSError(f'MacOS is not supported right now')
+        raise err.UnsupportedOSError(os)
+
+    @staticmethod
+    def validate_os(terminate_on_error=True):
+        try:
+            os = System.get_os()
+        except err.UnsupportedOSError:
+            if terminate_on_error:
+                System.terminate()
+
     @staticmethod
     def clear():
         if platform.system().lower() == 'windows':
