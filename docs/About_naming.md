@@ -24,15 +24,17 @@ capital letter except the first -> e.g. thatIsAnExampleForCamelCase) for files o
 I name everything except comments and the exception talked below about after the snake case naming convention
 (replacing whitespaces with underscores).
 
-#### The Exception of (Py)QT
+Another interesting aspect is that variable names that appear inside and outside a function but hold different values
+are named different. Most of the time I try to use synonyms but when I don't find any or don't like them, I do the
+following: the variable outside the function keeps its name while the variable inside the function gets and `_f` added
+to its name at the end.
+
+I adhere to the above-mentioned method even when renaming the variable would technically not be needed as to 1. prevent
+confusion and 2. stop PyCharm from annoying me with the "variable out of scope" warning.
+
+#### The Exception of (Py)QT in naming
 
 Functions and classes as well as some imports that are tied to (Py)QT are named not after my normal (and for python
 standard) snake case naming convention but after the for C-based programming languages common naming convention of 
 camel case (no spaces between words and every word starts with a capital letter except the first -> e.g. 
 thatIsAnExampleForCamelCase).
-
-### About Classes
-
-### About functions
-
-### About variables
