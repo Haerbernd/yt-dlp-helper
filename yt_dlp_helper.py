@@ -7,7 +7,7 @@ from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
 
-def validate_url(link):
+def validate_url(link):  # TODO: Optimize https recognition
     if str(link).startswith('https://www.youtube.com/watch?v=') | str(link).startswith('youtube.com/watch?v=') | \
             str(link).startswith('https://youtu.be/') | str(link).startswith('youtu.be/') | \
             str(link).startswith('https://youtube.com/watch?v=') | str(link).startswith('www.youtube.com/playlist') | \
@@ -18,8 +18,8 @@ def validate_url(link):
         return False
 
 
-def download_video(link):
-    os.system(f'.\\yt-dlp --config-location "./default.conf" {link}')
+def download_video(link, config="./default.conf"):
+    os.system(f'.\\yt-dlp --config-location "{config}" "{link}"')
 
 
 class MainWindow(qtw.QWidget):
@@ -31,12 +31,15 @@ class MainWindow(qtw.QWidget):
         instructionLabel = qtw.QLabel('Input video URL!', self)
         self.URLBox = qtw.QLineEdit(self)
         submitButton = qtw.QPushButton('Enter', self, shortcut=qtg.QKeySequence('return'), clicked=self.onPush)
+
         self.errorLabel = qtw.QLabel('<span style="color:red;">Invalid URL! Make sure to use a youtube video link!'
                                      '</span>', self)
         self.errorLabel.setVisible(False)
 
         layout = qtw.QVBoxLayout()
         sublayout = qtw.QHBoxLayout()
+
+        #  Hint: The Order in which the labels are added is important -> Do not change!
         self.setLayout(layout)
         layout.addWidget(instructionLabel)
         layout.addLayout(sublayout)
