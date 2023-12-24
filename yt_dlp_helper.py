@@ -26,8 +26,8 @@ def validate_url(link):
         return False
 
 
-def download_video(link, config="./default.conf"):
-    os.system(f'.\\yt-dlp --config-location "{config}" "{link}"')
+def download_video(link, yt_dlp_config_file="./default.conf"):
+    os.system(f'.\\yt-dlp --config-location "{yt_dlp_config_file}" "{link}"')
 
 
 class MainWindow(qtw.QWidget):
@@ -86,8 +86,8 @@ if __name__ == '__main__':
     # TODO: Make the following block more versatile and responsive to the config
     if not os.path.exists('./videos'):
         os.mkdir('./videos')
-    if not os.path.exists('./default.conf'):
-        file = open('./default.conf', 'w', encoding='utf-8')
+    if not os.path.exists('.meta/default.conf'):
+        file = open('.meta/default.conf', 'w', encoding='utf-8')
         file.write(f'-P "{os.getcwd()}/videos"\n-o "%(title)s.%(ext)s"\n--windows-filenames')
         file.close()
 
