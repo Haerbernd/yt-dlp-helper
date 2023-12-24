@@ -6,7 +6,7 @@
 - started to add documentation to this project
 - started to implement tests
 - added support for playlists and shorts
-- added logging
+- started to add logging
 - added utility scripts
 - minor code improvements
 - added rudimentary config for the program
