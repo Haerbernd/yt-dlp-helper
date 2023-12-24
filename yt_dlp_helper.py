@@ -1,3 +1,5 @@
+import re
+
 from src import utils, logger as log
 import platform
 import sys
@@ -11,6 +13,8 @@ own_name = str(os.path.basename(__file__).replace('.py', ''))
 
 
 def validate_url(link):  # TODO: Optimize https recognition
+    if str(link).startswith('http:'):
+        link = re.sub('http:', 'https:', str(link))
     if str(link).startswith('https://www.youtube.com/watch?v=') | str(link).startswith('youtube.com/watch?v=') | \
             str(link).startswith('https://youtu.be/') | str(link).startswith('youtu.be/') | \
             str(link).startswith('https://youtube.com/watch?v=') | str(link).startswith('www.youtube.com/playlist') | \
@@ -78,12 +82,14 @@ if __name__ == '__main__':
                         f'{get_os_specific_yt_dlp_binary_extension()}', f'yt-dlp'
                                                                         f'{get_os_specific_yt_dlp_binary_extension()}')
 
+    # TODO: Make the following block more versatile and responsive to the config
     if not os.path.exists('./videos'):
         os.mkdir('./videos')
     if not os.path.exists('./default.conf'):
         file = open('./default.conf', 'w', encoding='utf-8')
         file.write(f'-P "{os.getcwd()}/videos"\n-o "%(title)s.%(ext)s"\n--windows-filenames')
         file.close()
+
     app = qtw.QApplication(sys.argv)
     mw = MainWindow()
     sys.exit(app.exec())
