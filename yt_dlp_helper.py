@@ -12,7 +12,8 @@ from PyQt5 import QtCore as qtc
 own_name = str(os.path.basename(__file__).replace('.py', ''))
 
 
-def validate_url(link):  # TODO: Optimize https recognition
+# This function only validates weather a URL is technically a correct YouTube link not if it is actually a working URL
+def validate_url(link):
     if str(link).startswith('http:'):
         link = re.sub('http:', 'https:', str(link))
     if str(link).startswith('https://www.youtube.com/watch?v=') | str(link).startswith('youtube.com/watch?v=') | \
