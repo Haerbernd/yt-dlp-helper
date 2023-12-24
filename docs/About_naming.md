@@ -18,7 +18,7 @@ sometimes I replace whitespaces with dashes.
 
 I only seldom use the camelCase naming convention (no spaces between words, and every word starts with a capital letter
 except the first -> e.g.: thatIsAnExampleForCamelCase) for files or scripts,
-but it is my standard for keys in json files.
+but it is my standard for keys in json files, although I deviate from this when it makes sense.
 
 ## About names inside scripts
 
