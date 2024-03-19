@@ -7,7 +7,7 @@
 - started to implement tests
 - added support for playlists and shorts
 - started to add logging
-- added utility scripts
+- added utility scripts and extracted existing ones
 - minor code improvements
 - added rudimentary config for the program
 - improved README

@@ -1,5 +1,5 @@
 import yt_dlp_helper
-from src import utils
+from src import Color
 
 valid_urls = [
     'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
@@ -25,7 +25,7 @@ for i in invalid_urls:
         invalidate_error += 1
 
 if invalidate_error or validate_error > 0:
-    print(f'The test {utils.Color.red}failed!{utils.Color.reset}\nThere {validate_error} valid urls were perceived as '
+    print(f'The test {Color.red}failed!{Color.reset}\nThere {validate_error} valid urls were perceived as '
           f'invalid and {invalidate_error}  invalid urls were perceived as valid')
 else:
-    print(f'All test completed {utils.Color.green}successfully{utils.Color.reset}')
+    print(f'All test completed {Color.green}successfully{Color.reset}')

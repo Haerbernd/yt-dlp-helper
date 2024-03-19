@@ -1,4 +1,4 @@
-from src import utils, config_handler, logger as log
+from src import config_handler, logger as log, SystemFunctions
 import sys
 import os
 import re
@@ -9,6 +9,7 @@ from PyQt5 import QtCore as qtc
 
 
 # This function only validates weather a URL is technically a correct YouTube link not if it is a working URL
+# TODO: clean this up by simplifying it
 def validate_url(link):
     if str(link).startswith('http:'):
         link = re.sub('http:', 'https:', str(link))
@@ -18,8 +19,7 @@ def validate_url(link):
             str(link).startswith('https://www.youtube.com/playlist') | str(link).startswith('youtube.com/shorts') | \
             str(link).startswith('https://youtube.com/shorts'):
         return True
-    else:
-        return False
+    return False
 
 
 def download_video(link, config_file, use_global_config):
@@ -69,7 +69,7 @@ class MainWindow(qtw.QWidget):
 
 
 def get_os_specific_yt_dlp_binary_extension():
-    current_os = utils.SystemFunctions.validate_os()
+    current_os = SystemFunctions.validate_os()
 
     if current_os == 'windows':
         return '.exe'
