@@ -14,3 +14,10 @@ def list_to_pretty_string(list_that_will_be_converted, keep_comma=True, replace_
     if not keep_comma:
         list_that_will_be_converted = re.sub(',', '', list_that_will_be_converted)
     return list_that_will_be_converted
+
+
+def remove_newlines(input_text):
+    input_text = str(input_text)
+    input_text = re.sub('\n', '', input_text)
+    input_text = re.sub('\r', '', input_text)
+    return input_text
