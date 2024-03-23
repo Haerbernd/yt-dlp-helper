@@ -8,7 +8,7 @@ from PyQt5 import QtGui as qtg
 from PyQt5 import QtCore as qtc
 
 
-# This function only validates weather a URL is technically a correct YouTube link not if it is a working URL
+# This function only validates whether a URL is technically a correct YouTube link not if it is a working URL
 # TODO: clean this up by simplifying it
 def validate_url(link):
     if str(link).startswith('http:'):
