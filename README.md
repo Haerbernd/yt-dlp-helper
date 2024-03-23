@@ -3,7 +3,7 @@
 yt-dlp-helper is a project which intends to help users use yt-dlp.
 
 ## Installation
-If you are using Windows simply download the [release .zip file] (https://haerbernd.dev/releases/yt-dlp-helper/yt-dlp-helper_2.0.0-ALPHA.zip) and execute the yt-dlp-helper.exe.<br/>
+If you are using Windows simply download the [release .zip file](https://haerbernd.dev/releases/yt-dlp-helper/yt-dlp-helper_2.0.0-ALPHA.zip) and execute the yt-dlp-helper.exe.<br/>
 If you are using Linux or want to use the Python script directly on Windows, download the source code and execute
 `install-dependencies[.bat/.sh]` (.bat on Windows, .sh on Linux (don't forget chmod +x "filename")) and afterwards
 execute the yt_dlp_helper.py with python.
