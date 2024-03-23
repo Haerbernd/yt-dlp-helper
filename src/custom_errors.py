@@ -1,0 +1,2 @@
+class UnsupportedOSError(Exception):
+    pass
